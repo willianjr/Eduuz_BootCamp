@@ -16,6 +16,11 @@ let pontosView = document.querySelector('.pontuacao_score');
 const genius = document.querySelector('.genius');
 const circulo = document.querySelector('.circulo');
 const button = document.querySelector('button');
+const audio_red = document.querySelector('.audio_red');
+const audio_blue = document.querySelector('.audio_blue');
+const audio_green = document.querySelector('.audio_green');
+const audio_yellow = document.querySelector('.audio_yellow');
+const audio_gameover = document.querySelector('.audio_gameover');
 
 //cria ordem aletoria de cores
 let shuffleOrder = () => {
@@ -32,9 +37,10 @@ let shuffleOrder = () => {
 //acende a proxima cor
 let lightColor = (element, number) => {
     const timers = timeForScore(number);
-    console.log(timers)
+    //console.log(timers)
      setTimeout(() => {
-        element.classList.add('selected');
+         document.querySelector(`.audio_${element.classList}`).play();
+         element.classList.add('selected');
     },  timers[0]);
     setTimeout(() => {
         element.classList.remove('selected');
@@ -71,8 +77,10 @@ let click = (color) => {
     if (!gameovers) { 
     //console.log(`click${color}${genius.classList.contains('gameover')}`)
     clickedOrder[clickedOrder.length] = color;
-    createColorElement(color).classList.add('selected');
-
+        console.log(`.audio_${createColorElement(color).classList}`)
+        document.querySelector(`.audio_${createColorElement(color).classList}`).play();
+        createColorElement(color).classList.add('selected');
+   
     setTimeout(() => {
         createColorElement(color).classList.remove('selected');
         checkOrder();
@@ -105,6 +113,7 @@ let nextLevel = () => {
 
 //funcao para game over
 let gameOver = () => {
+    audio_gameover.play();
     alert(`Pontuação: ${score}!\nVocê perdeu o jogo!\nClique em OK para iniciar um novo jogo`);
     order = [];
     clickedOrder = [];
@@ -120,6 +129,7 @@ let gameOver = () => {
     blue.classList.remove('selected');
     //playGame();
 }
+
 
 //função pra diminuir o tempo ao nivel do score
 const timeForScore = (number) => {
@@ -143,6 +153,7 @@ let playGame = () => {
     button.style.display='none';
     score = -1;
     nextLevel();
+   
 }
 
 //eventos de clique para as cores
