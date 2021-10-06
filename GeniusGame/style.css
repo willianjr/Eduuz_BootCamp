@@ -26,7 +26,7 @@ audio {
 	margin: 1rem;
 	cursor: pointer;
 }
-.circulo {
+.pontuacao {
 	background-color: #fff;
 	width: 50vh;
 	height: 50vh;
@@ -56,9 +56,18 @@ audio {
 		height: calc(100vw - 2rem);
 		width: calc(100vw - 2rem);
 	}
-	.circulo {
+	.pontuacao {
 		height: 50vw;
 		width: 50vw;
+	}
+	.pontuacao h2 {
+		font-size: 10rem !important;
+		margin: 0.12rem !important;
+		letter-spacing: -10px !important;
+	}
+	.pontuacao small {
+		font-size: 1rem !important;
+		margin-top: -2rem !important;
 	}
 }
 
@@ -66,10 +75,32 @@ audio {
 	height: calc(10vh);
 	width: calc(10vh);
 }
-.circulo.gameover {
+.pontuacao.gameover {
 	height: calc(5vh);
 	width: calc(5vh);
 	margin-top: -5rem;
+}
+.pontuacao.gameover h2,
+.pontuacao.gameover small {
+	display: none;
+}
+.pontuacao {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+
+	z-index: 99999;
+}
+
+.pontuacao h2 {
+	font-size: 20rem;
+	margin: 0.25rem;
+	letter-spacing: -20px;
+}
+.pontuacao small {
+	font-size: 2rem;
+	margin-top: -2rem;
 }
 
 .blue,
@@ -120,25 +151,4 @@ audio {
 
 .selected {
 	opacity: 0.5;
-}
-
-.pontuacao {
-	width: 80px;
-	height: 80px;
-	margin: 1rem;
-	border-radius: 0.25rem;
-	background-color: #fff;
-	position: fixed;
-	top: 0px;
-	right: 0px;
-
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-}
-
-.pontuacao h2 {
-	font-size: 40px;
-	margin: 0.15rem;
 }

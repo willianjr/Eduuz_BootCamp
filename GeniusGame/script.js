@@ -14,7 +14,7 @@ const green = document.querySelector('.green');
 const yellow = document.querySelector('.yellow');
 let pontosView = document.querySelector('.pontuacao_score');
 const genius = document.querySelector('.genius');
-const circulo = document.querySelector('.circulo');
+const pontuacao = document.querySelector('.pontuacao');
 const button = document.querySelector('button');
 const audio_red = document.querySelector('.audio_red');
 const audio_blue = document.querySelector('.audio_blue');
@@ -120,7 +120,7 @@ let gameOver = () => {
     //console.log(`score:${score}`)
     pontosView.innerText = '0';
     genius.classList.add('gameover');
-    circulo.classList.add('gameover');
+    pontuacao.classList.add('gameover');
     button.style.display = 'block';
     
     green.classList.remove('selected');
@@ -149,7 +149,7 @@ const timeForScore = (number) => {
 let playGame = () => {
     //alert('Bem vindo ao Gênesis! Iniciando novo jogo!');
     genius.classList.remove('gameover');
-    circulo.classList.remove('gameover');
+    pontuacao.classList.remove('gameover');
     button.style.display='none';
     score = -1;
     nextLevel();
