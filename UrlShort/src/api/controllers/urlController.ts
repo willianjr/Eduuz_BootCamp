@@ -23,7 +23,7 @@ class URLController {
 
 			return response.status(201).json(newURL)
 		} catch (error) {
-			return response.status(400).json({ message: error })
+			return response.status(400).json({ message: error.message })
 		}
 	}
 
@@ -34,13 +34,13 @@ class URLController {
 			const url = await urlRepository.findOne({ hash })
 
 			if (url) {
-				response.redirect(url.originURL)
-				return
+				//response.redirect(url.originURL)
+				return response.status(200).send(url)
 			}
 
 			response.status(400).json({ error: 'URL not found' })
 		} catch (error) {
-			return response.status(400).json({ message: error })
+			return response.status(400).json({ message: error.message })
 		}
 	}
 }

@@ -35,7 +35,9 @@ class App {
 			}
 			next()
 		})
-
+		this.express.get('/', (req, res) => {
+			return res.status(404).send('Use /Api')
+		})
 		this.express.use('/', routes)
 	}
 }

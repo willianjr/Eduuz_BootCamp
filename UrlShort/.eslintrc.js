@@ -5,6 +5,7 @@ module.exports = {
 		node: true
   },
 	extends: [
+		'plugin:jest/recommended',
 		'plugin:@typescript-eslint/recommended',
 		'prettier',
     'standard'
