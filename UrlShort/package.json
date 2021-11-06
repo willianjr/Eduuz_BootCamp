@@ -1,30 +1,51 @@
 {
-  "name": "urlshort",
-  "version": "1.0.0",
-  "description": "Sistema de encurtador de URL",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "wrjr sistemas",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "express-query-int": "^3.0.0",
-    "reflect-metadata": "^0.1.13",
-    "uuid": "^8.3.2"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.12",
-    "@types/express": "^4.17.13",
-    "@types/jest": "^27.0.2",
-    "@types/node": "^16.10.1",
-    "@types/uuid": "^8.3.1",
-    "jest": "^27.2.3",
-    "ts-jest": "^27.0.5",
-    "ts-node": "^10.2.1",
-    "ts-node-dev": "^1.1.8",
-    "typescript": "^4.4.3"
-  }
+    "name": "urlshort",
+    "version": "1.0.0",
+    "description": "Sistema de encurtador de URL",
+    "main": "src/server.ts",
+    "scripts": {
+        "dev:server": "set NODE_ENV=development && ts-node-dev -r tsconfig-paths/register  --inspect --transpile-only --ignore-watch node_modules src/server.ts",
+        "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
+        "start": "ts-node src/server.ts",
+        "pretest": "set NODE_ENV=test && node --require ts-node/register ./node_modules/typeorm/cli.js migration:run",
+        "test": "set NODE_ENV=test && jest ",
+        "posttest": "set NODE_ENV=test && node --require ts-node/register ./node_modules/typeorm/cli.js schema:drop"
+    },
+    "author": "wrjr sistemas",
+    "license": "ISC",
+    "dependencies": {
+        "class-validator": "^0.13.1",
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "express-query-int": "^3.0.0",
+        "reflect-metadata": "^0.1.13",
+        "shortid": "^2.2.16",
+        "sqlite3": "^5.0.2",
+        "typeorm": "^0.2.38",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "@types/cors": "^2.8.12",
+        "@types/express": "^4.17.13",
+        "@types/jest": "^27.0.2",
+        "@types/node": "^16.10.1",
+        "@types/shortid": "^0.0.29",
+        "@types/uuid": "^8.3.1",
+        "@typescript-eslint/eslint-plugin": "^5.3.0",
+        "@typescript-eslint/parser": "^5.3.0",
+        "eslint": "^7.32.0",
+        "eslint-config-standard": "^16.0.3",
+        "eslint-plugin-import": "^2.25.2",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-promise": "^5.1.1",
+        "eslint-plugin-standard": "^5.0.0",
+        "jest": "^27.2.3",
+        "prettier": "^2.4.1",
+        "ts-jest": "^27.0.5",
+        "ts-node": "^10.2.1",
+        "ts-node-dev": "^1.1.8",
+        "typescript": "^4.4.3"
+    }
 }
